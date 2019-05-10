@@ -1,0 +1,160 @@
+{
+  "name": "Ticket",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "QdupG",
+  "actions": [
+    {
+      "message": "0",
+      "varName": "",
+      "info": "3",
+      "storage": "2",
+      "varName2": "tickauthor",
+      "name": "Store Message Info"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "storage": "2",
+      "varName": "ticket-num",
+      "min": "10000000",
+      "max": "9999999999",
+      "name": "Generate Random Number"
+    },
+    {
+      "info": "1",
+      "infoIndex": "1",
+      "storage": "2",
+      "varName": "origmessage",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "1",
+      "find": "Support Team",
+      "storage": "1",
+      "varName": "ticketcat",
+      "name": "Find Category"
+    },
+    {
+      "channelName": "ticket-${serverVars(\"ticket-num\")}",
+      "categoryID": "515151790900248587",
+      "topic": "",
+      "position": "",
+      "storage": "2",
+      "varName": "ticket-channel",
+      "name": "Create Text Channel"
+    },
+    {
+      "storage": "4",
+      "varName": "ticket-channel",
+      "permission": "READ_MESSAGES",
+      "state": "1",
+      "name": "Set Channel Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${member} your ticket has been created! ${serverVars(\"ticket-channel\")} :ticket:",
+      "storage": "1",
+      "varName2": "createdtick",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "1",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "createdtick",
+      "name": "Delete Message"
+    },
+    {
+      "info": "1",
+      "find": "Support Team",
+      "storage": "1",
+      "varName": "team",
+      "name": "Find Role"
+    },
+    {
+      "channel": "6",
+      "varName": "ticket-channel",
+      "message": "${tempVars(\"team\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "title": "Ticket #${serverVars(\"ticket-num\")}",
+      "author": "",
+      "color": "",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "ticketmsg",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "ticketmsg",
+      "message": "${member} \nHello! This ticket is for you to speak to support!\n\nA member of staff will contact you as soon as they receive this message.",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "ticketmsg",
+      "fieldName": "Original Message",
+      "message": "${serverVars(\"origmessage\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "ticketmsg",
+      "channel": "6",
+      "varName2": "ticket-channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "channel": "4",
+      "varName": "ticket-channel",
+      "member": "1",
+      "varName2": "",
+      "permission": "READ_MESSAGES",
+      "state": "0",
+      "name": "Set Member Channel Perms"
+    },
+    {
+      "channel": "4",
+      "varName": "ticket-channel",
+      "role": "3",
+      "varName2": "team",
+      "permission": "READ_MESSAGES",
+      "state": "0",
+      "name": "Set Role Channel Perms"
+    }
+  ]
+}
