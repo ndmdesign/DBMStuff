@@ -1,0 +1,104 @@
+{
+  "name": "close",
+  "permissions": "MANAGE_MESSAGES",
+  "restriction": "1",
+  "_id": "GLlIp",
+  "actions": [
+    {
+      "info": "1",
+      "find": "ticket-log",
+      "storage": "1",
+      "varName": "ticketlog",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "closeticreason",
+      "name": "Store Command Params"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "test",
+      "name": "Store Channel Info"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "@here Ticket will be closed in 10 Seconds.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "title": "${tempVars(\"test\")} Closed",
+      "author": "",
+      "color": "Green",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "tickembedclose",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "tickembedclose",
+      "fieldName": "Ticket Request by: ",
+      "message": "${serverVars(\"tickauthor\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "tickembedclose",
+      "fieldName": "Ticket Closed by: ",
+      "message": "${member}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "tickembedclose",
+      "fieldName": "Support Request Reason:",
+      "message": "${serverVars(\"origmessage\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "tickembedclose",
+      "fieldName": "Reason for Closure:",
+      "message": "${tempVars(\"closeticreason\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "tickembedclose",
+      "channel": "5",
+      "varName2": "ticketlog",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "time": "10",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Channel"
+    }
+  ]
+}
